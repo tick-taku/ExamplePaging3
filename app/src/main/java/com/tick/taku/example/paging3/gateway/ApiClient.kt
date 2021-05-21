@@ -2,6 +2,7 @@ package com.tick.taku.example.paging3.gateway
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonConfiguration
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -19,7 +20,12 @@ class ApiClient {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(provideHttpClient())
-            .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+            .addConverterFactory(
+                Json {
+                    isLenient = true
+                    ignoreUnknownKeys = true
+                }.asConverterFactory("application/json".toMediaType())
+            )
             .build()
 
     private fun provideHttpClient() =
