@@ -4,7 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Breed(
-    val image: Cat,
     val name: String,
     val description: String
 )

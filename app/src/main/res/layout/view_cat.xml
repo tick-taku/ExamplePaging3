@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="breed" type="com.tick.taku.example.paging3.entity.Breed" />
+        <variable name="cat" type="com.tick.taku.example.paging3.entity.Cat" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -43,7 +43,7 @@
                     android:layout_height="match_parent"
                     android:scaleType="fitCenter"
                     android:contentDescription="@null"
-                    app:load="@{breed.image.url}"/>
+                    app:load="@{cat.url}"/>
 
             </androidx.cardview.widget.CardView>
 
@@ -56,11 +56,11 @@
                 app:layout_constraintBottom_toTopOf="@id/description"
                 app:layout_constraintVertical_chainStyle="spread"
                 android:layout_marginStart="30dp"
-                android:text="@{breed.name}"
+                android:text="@{cat.breed.name == null ? cat.breed.name : @string/default_name}"
                 android:textColor="@color/cat_name"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                tools:text="Cat"/>
+                tools:text="@string/default_name"/>
 
             <TextView
                 android:id="@+id/description"
@@ -69,14 +69,14 @@
                 app:layout_constraintStart_toStartOf="@id/name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/name"
+                android:text="@{cat.breed.description == null ? cat.breed.description : @string/default_description}"
                 app:layout_constraintBottom_toBottomOf="@id/cat_image"
-                android:text="@{breed.description}"
                 android:textSize="14sp"
                 android:textColor="@color/colorPrimaryDark"
                 android:lines="2"
                 android:ellipsize="end"
                 android:gravity="start"
-                tools:text="Oh my got!!\nThe cat is so cute!! It's very nice!!"/>
+                tools:text="@string/default_description"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
