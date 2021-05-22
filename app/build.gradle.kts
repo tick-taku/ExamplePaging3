@@ -42,6 +42,11 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
+    implementation("androidx.activity:activity-ktx:1.2.3")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+
     implementation("androidx.paging:paging-runtime-ktx:3.0.0")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
