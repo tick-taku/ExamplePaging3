@@ -4,6 +4,6 @@ import com.tick.taku.example.paging3.entity.Cat
 
 interface CatRepository {
 
-    suspend fun cat(page: Int): List<Cat>
+    suspend fun cat(limit: Int, page: Int): List<Cat>
 
 }

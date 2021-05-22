@@ -9,8 +9,8 @@ internal class CatRepositoryImpl(
     private val apiClient: ApiClient
 ): CatRepository {
 
-    override suspend fun cat(page: Int): List<Cat> =
+    override suspend fun cat(limit: Int, page: Int): List<Cat> =
         apiClient.provideRetrofit().create(CatSearchApi::class.java)
-            .cats(20, page)
+            .cats(limit, page)
 
 }
