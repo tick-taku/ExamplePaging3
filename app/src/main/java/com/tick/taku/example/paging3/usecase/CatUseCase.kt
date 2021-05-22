@@ -1,5 +1,6 @@
 package com.tick.taku.example.paging3.usecase
 
+import com.tick.taku.example.paging3.entity.Breed
 import com.tick.taku.example.paging3.entity.Cat
 
 interface CatUseCase {
@@ -7,5 +8,7 @@ interface CatUseCase {
     val limit: Int
 
     suspend fun cate(page: Int): List<Cat>
+
+    suspend fun breeds(page: Int): List<Breed>
 
 }
