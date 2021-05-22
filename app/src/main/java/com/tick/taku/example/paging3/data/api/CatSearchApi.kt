@@ -1,4 +1,4 @@
-package com.tick.taku.example.paging3.api
+package com.tick.taku.example.paging3.data.api
 
 import com.tick.taku.example.paging3.entity.Cat
 import retrofit2.http.GET
