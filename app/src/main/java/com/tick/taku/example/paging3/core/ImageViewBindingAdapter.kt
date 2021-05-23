@@ -5,11 +5,11 @@ import androidx.databinding.BindingAdapter
 import coil.load
 import coil.request.CachePolicy
 
-@BindingAdapter("load", "cachePolicy", requireAll = false)
-fun ImageView.loadImage(url: String?, diskCachePolicy: CachePolicy = CachePolicy.DISABLED) {
+@BindingAdapter("load")
+fun ImageView.loadImage(url: String?) {
     url?.takeIf { it.isNotEmpty() }?.let {
         load(it) {
-            diskCachePolicy(diskCachePolicy)
+            diskCachePolicy(CachePolicy.DISABLED)
         }
     }
 }

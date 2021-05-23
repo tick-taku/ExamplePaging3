@@ -6,5 +6,7 @@ import kotlinx.serialization.Serializable
 data class Cat(
     val id: String,
     val url: String,
-    val breed: Breed? = null
-)
+    val breeds: List<Breed>
+) {
+    fun firstBreed() = breeds.firstOrNull()
+}
