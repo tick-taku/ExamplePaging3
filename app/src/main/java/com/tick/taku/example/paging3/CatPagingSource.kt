@@ -11,14 +11,14 @@ class CatPagingSource(
 ): PagingSource<Int, Cat>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Cat> {
-        val nextKey = params.key ?: 0
+        val nextKey = params.key ?: 1
         return runCatching { repository.cats(limit, nextKey) }
             .fold(
                 onSuccess = {
                     LoadResult.Page(
                         data = it,
                         prevKey = null,
-                        nextKey = nextKey
+                        nextKey = nextKey + 1
                     )
                 },
                 onFailure = {
