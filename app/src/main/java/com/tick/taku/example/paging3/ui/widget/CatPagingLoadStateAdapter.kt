@@ -1,0 +1,38 @@
+package com.tick.taku.example.paging3.ui.widget
+
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.paging.LoadState
+import androidx.paging.LoadStateAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.tick.taku.example.paging3.databinding.ViewCatLoadStateBinding
+
+class CatPagingLoadStateAdapter(
+    private val retryListener: () -> Unit
+): LoadStateAdapter<CatPagingLoadStateAdapter.ViewHolder>() {
+
+    inner class ViewHolder(
+        private val binding: ViewCatLoadStateBinding
+    ): RecyclerView.ViewHolder(binding.root) {
+        fun bind(loadState: LoadState) {
+            Log.d(this::class.simpleName, "LoadState: $loadState")
+
+            binding.isLoading = loadState is LoadState.Loading
+            binding.isError = loadState is LoadState.Error
+
+            binding.retry.setOnClickListener { retryListener() }
+
+            binding.executePendingBindings()
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): ViewHolder =
+        ViewHolder(
+            ViewCatLoadStateBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
+
+    override fun onBindViewHolder(holder: ViewHolder, loadState: LoadState) {
+        holder.bind(loadState)
+    }
+}

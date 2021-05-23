@@ -3,4 +3,6 @@
 
     <string name="default_name">Cat</string>
     <string name="default_description">Oh my got!!\nThe cat is so cute!! Its very nice!!</string>
+
+    <string name="retry">RETRY</string>
 </resources>

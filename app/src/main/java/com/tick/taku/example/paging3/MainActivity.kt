@@ -12,6 +12,7 @@ import com.tick.taku.example.paging3.entity.Cat
 import com.tick.taku.example.paging3.gateway.ApiClient
 import com.tick.taku.example.paging3.ui.viewmodel.CatViewModel
 import com.tick.taku.example.paging3.ui.widget.CatPagingAdapter
+import com.tick.taku.example.paging3.ui.widget.CatPagingLoadStateAdapter
 import com.tick.taku.example.paging3.usecase.internal.CatUseCaseImpl
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +30,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.catList.adapter = listAdapter
+        binding.catList.adapter = listAdapter.withLoadStateFooter(
+            CatPagingLoadStateAdapter { listAdapter.retry() }
+        )
 
         viewModel.cats.observe(this) {
             listAdapter.submitWhenStarted(it)
