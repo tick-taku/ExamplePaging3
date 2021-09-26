@@ -10,6 +10,6 @@ internal class CatUseCaseImpl(
 
     override val limit: Int = 20
 
-    override fun cats(page: Int): CatPagingSource = CatPagingSource(repository, limit)
+    override fun cats(): CatPagingSource = CatPagingSource(repository)
 
 }

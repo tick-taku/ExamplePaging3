@@ -6,6 +6,6 @@ interface CatUseCase {
 
     val limit: Int
 
-    fun cats(page: Int): CatPagingSource
+    fun cats(): CatPagingSource
 
 }

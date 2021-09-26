@@ -11,7 +11,7 @@ class CatViewModel(private val useCase: CatUseCase): ViewModel() {
 
     val cats: LiveData<PagingData<Cat>> =
         Pager(PagingConfig(pageSize = useCase.limit, initialLoadSize = useCase.limit)) {
-            useCase.cats(0)
+            useCase.cats()
         }.flow.asLiveData()
 
 }

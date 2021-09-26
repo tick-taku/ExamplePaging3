@@ -6,13 +6,12 @@ import com.tick.taku.example.paging3.data.repository.CatRepository
 import com.tick.taku.example.paging3.entity.Cat
 
 class CatPagingSource(
-    private val repository: CatRepository,
-    private val limit: Int
+    private val repository: CatRepository
 ): PagingSource<Int, Cat>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Cat> {
         val nextKey = params.key ?: 1
-        return repository.cats(limit, nextKey)
+        return repository.cats(params.loadSize, nextKey)
             .fold(
                 onSuccess = {
                     LoadResult.Page(
