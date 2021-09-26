@@ -64,4 +64,10 @@ dependencies {
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
 
     implementation("com.squareup.okhttp3:logging-interceptor:4.3.1")
+
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.1")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:1.3.41")
+    testImplementation("org.mockito:mockito-core:3.10.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
+    testImplementation("com.google.truth:truth:1.0")
 }
