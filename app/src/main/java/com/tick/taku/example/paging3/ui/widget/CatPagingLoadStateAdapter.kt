@@ -8,8 +8,10 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.tick.taku.example.paging3.databinding.ViewCatLoadStateBinding
 
+private typealias RetryListener = () -> Unit
+
 class CatPagingLoadStateAdapter(
-    private val retryListener: () -> Unit
+    private val retry: RetryListener
 ): LoadStateAdapter<CatPagingLoadStateAdapter.ViewHolder>() {
 
     inner class ViewHolder(
@@ -21,7 +23,7 @@ class CatPagingLoadStateAdapter(
             binding.isLoading = loadState is LoadState.Loading
             binding.isError = loadState is LoadState.Error
 
-            binding.retry.setOnClickListener { retryListener() }
+            binding.retry.setOnClickListener { retry() }
 
             binding.executePendingBindings()
         }
