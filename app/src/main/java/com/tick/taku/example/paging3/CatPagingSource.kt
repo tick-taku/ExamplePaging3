@@ -17,8 +17,8 @@ class CatPagingSource(
                 onSuccess = {
                     LoadResult.Page(
                         data = it,
-                        prevKey = null,
-                        nextKey = nextKey.plus(1).takeIf { _ -> it.isNotEmpty() }
+                        prevKey = nextKey - 1,
+                        nextKey = (nextKey + 1).takeIf { _ -> it.isNotEmpty() }
                     )
                 },
                 onFailure = {
