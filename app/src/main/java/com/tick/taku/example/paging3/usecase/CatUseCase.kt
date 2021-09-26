@@ -1,13 +1,11 @@
 package com.tick.taku.example.paging3.usecase
 
-import androidx.paging.PagingData
-import com.tick.taku.example.paging3.entity.Cat
-import kotlinx.coroutines.flow.Flow
+import com.tick.taku.example.paging3.CatPagingSource
 
 interface CatUseCase {
 
     val limit: Int
 
-    fun cats(page: Int): Flow<PagingData<Cat>>
+    fun cats(page: Int): CatPagingSource
 
 }
