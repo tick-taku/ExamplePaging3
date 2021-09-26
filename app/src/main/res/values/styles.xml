@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.AppCompat.ProgressBar.Indicator">
+        <item name="android:indeterminateTint">@color/shadow</item>
+        <item name="android:progressTint">@color/shadow</item>
+    </style>
+</resources>

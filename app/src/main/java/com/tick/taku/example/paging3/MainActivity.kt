@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.paging.PagingData
+import com.tick.taku.example.paging3.core.andRefreshable
 import com.tick.taku.example.paging3.databinding.ActivityMainBinding
 import com.tick.taku.example.paging3.entity.Cat
 import com.tick.taku.example.paging3.ui.viewmodel.CatViewModel
@@ -27,9 +29,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.catList.adapter = listAdapter.withLoadStateFooter(
-            CatPagingLoadStateAdapter { listAdapter.retry() }
-        )
+        binding.catList.adapter = listAdapter
+            .andRefreshable(binding.refreshLayout)
+            .withLoadStateFooter(CatPagingLoadStateAdapter { listAdapter.retry() })
 
         viewModel.cats.observe(this) {
             listAdapter.submitWhenStarted(it)
